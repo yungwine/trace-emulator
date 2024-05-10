@@ -9,23 +9,6 @@ BC_CONFIG = None
 BC_CONFIG_TIME = 0
 
 
-class MyTransactionEmulator(TransactionEmulator):
-    """
-    Transaction Emulator without deserializing `Transaction` Tl-B object.
-    """
-
-    @staticmethod
-    def _process_tr_emulation_result(result: dict):
-        from pytoniq_core.tlb.transaction import Transaction, OutList
-        from pytoniq_core.tlb.account import ShardAccount
-        if result['success']:
-            result['actions'] = OutList.deserialize(Slice.one_from_boc(result['actions'])) if result['actions'] else []
-            result['shard_account'] = ShardAccount.deserialize(Slice.one_from_boc(result['shard_account']))
-            result['transaction'] = Transaction.deserialize(Slice.one_from_boc(result['transaction']))
-            result['transaction_boc'] = result['transaction']
-        return result
-
-
 async def init_config():
     global BC_CONFIG, BC_CONFIG_TIME
     BC_CONFIG, param = await get_current_blockchain_config()
