@@ -5,7 +5,7 @@ from fastapi_cache.decorator import cache
 from pydantic import BaseModel
 
 
-from src.emulator import emulate, init_client, init_config
+from src.emulator import emulate, init_emulator
 
 router = APIRouter()
 
@@ -41,5 +41,4 @@ async def emulate_endp(
 
 @router.on_event("startup")
 async def startup():
-    await init_client()
-    await init_config()
+    await init_emulator()
