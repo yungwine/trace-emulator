@@ -17,7 +17,8 @@ Create `.env` file with the following content:
 ```
 PORT=12123  # port for the API
 CONFIG_PATH='config.json'  # path to config with liteservers
-MAX_REQ_PER_PEER=30  # maximum amount of requests per peer
+MAX_REQ_PER_PEER=30  # maximum amount of requests per liteserver
+LOGGING='INFO'  # logging level
 ```
 
 

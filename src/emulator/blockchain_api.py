@@ -38,7 +38,14 @@ class CachedLiteBalancer(LiteBalancer, BlockchainApi):
         if data is not None:
             if data[0] == block:
                 return data[1]
+        s = time.time()
         result = await super().raw_get_account_state(address, block, **kwargs)
+        self._logger.debug(f'get_account_state time: {time.time() - s}, address: {address}')
+        if time.time() - s > 0.25:
+            self._logger.info(f'get_account_state time: {time.time() - s}, address: {address}')
+        self._logger.debug(f'current_req_num: {self._current_req_num}')
+        if sum(self._current_req_num.values()) > 100:
+            self._logger.info(f'current_req_num: {self._current_req_num}')
         self.cache[address] = (block, result)
         self.gc_cache()
         return result

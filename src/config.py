@@ -12,3 +12,5 @@ with open(CONFIG_PATH, 'r') as f:
     CONFIG = json.load(f)
 
 MAX_REQ_PER_PEER = int(os.getenv('MAX_REQ_PER_PEER', 30))
+
+LOGGING = os.getenv('LOGGING', 'INFO')

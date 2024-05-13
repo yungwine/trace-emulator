@@ -6,6 +6,7 @@ from pydantic import BaseModel
 
 
 from src.emulator import emulate, init_emulator
+from ..config import LOGGING
 
 router = APIRouter()
 
@@ -40,5 +41,5 @@ async def emulate_endp(
 
 @router.on_event("startup")
 async def startup():
-    logging.basicConfig(level=logging.INFO)
+    logging.basicConfig(level=LOGGING)
     await init_emulator()
