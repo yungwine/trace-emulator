@@ -10,10 +10,6 @@ popular contracts that involved in many traces.
 Now it's recommended to use this service with at least 3 private liteservers to emulate traces for all externals from mempool. 
 However, you can filter mining externals (not emulate them) and the load will drop several times.
 
-## Installation
-
-...
-
 ## ENV
 
 Create `.env` file with the following content:
@@ -23,3 +19,10 @@ PORT=12123  # port for the API
 CONFIG_PATH='config.json'  # path to config with liteservers
 MAX_REQ_PER_PEER=30  # maximum amount of requests per peer
 ```
+
+
+## Installation
+
+After cloning the repository and setting up environment variables run docker-compose:
+
+`docker compose up --build -d`
