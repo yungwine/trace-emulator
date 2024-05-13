@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi_cache import FastAPICache
 from fastapi_cache.backends.inmemory import InMemoryBackend
 
-import endpoints
+from . import endpoints
 
 
 app = FastAPI()

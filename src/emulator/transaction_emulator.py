@@ -1,6 +1,5 @@
 import time
 
-from pytoniq_core import Slice
 from pytvm.transaction_emulator import TransactionEmulator
 
 from src.emulator.blockchain_api import get_current_blockchain_config

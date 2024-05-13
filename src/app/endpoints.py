@@ -26,12 +26,12 @@ async def test():
 
 
 @router.post("/emulate", response_model=EmulatorResult)
-@cache(expire=60)
+@cache(expire=5)
 async def emulate_endp(
-        body: EmulateBody,
+        request_body: EmulateBody,
 ):
     try:
-        res = await asyncio.wait_for(await emulate(body.message), timeout=10)
+        res = await asyncio.wait_for(await emulate(request_body.message), timeout=10)
         return res
     except asyncio.TimeoutError:
         return {'ok': False, 'message': 'timeout', 'result': {}}

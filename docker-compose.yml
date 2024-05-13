@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+
+  trace-emulator:
+    env_file:
+      - .env
+    build:
+      dockerfile: src/Dockerfile
+      context: .
+    image: trace-emulator-img
+    ports:
+      - "${PORT}:80"
+    restart: always

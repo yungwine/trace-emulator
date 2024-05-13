@@ -22,9 +22,9 @@ class CachedLiteBalancer(LiteBalancer, BlockchainApi):
         return self.execute_method('_get_config_cell', self.last_mc_block)
 
     def gc_cache(self):
-        s = time.time()
-        last_block = self.last_mc_block
         if time.time() - self.last_gc_time > 60:
+            s = time.time()
+            last_block = self.last_mc_block
             for address, item in list(self.cache.items()):
                 if item[0].seqno < last_block.seqno - 3:
                     del self.cache[address]
