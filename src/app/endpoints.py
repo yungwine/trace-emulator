@@ -1,7 +1,6 @@
 import asyncio
 import typing
 from fastapi import APIRouter
-from fastapi_cache.decorator import cache
 from pydantic import BaseModel
 
 
@@ -26,7 +25,6 @@ async def test():
 
 
 @router.post("/emulate", response_model=EmulatorResult)
-@cache(expire=5)
 async def emulate_endp(
         request_body: EmulateBody,
 ):
