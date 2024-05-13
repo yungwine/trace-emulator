@@ -1,4 +1,5 @@
 import asyncio
+import logging
 import typing
 from fastapi import APIRouter
 from pydantic import BaseModel
@@ -39,4 +40,5 @@ async def emulate_endp(
 
 @router.on_event("startup")
 async def startup():
+    logging.basicConfig(level=logging.INFO)
     await init_emulator()
