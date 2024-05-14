@@ -2,11 +2,12 @@ import asyncio
 import logging
 import typing
 from fastapi import APIRouter
+from fastapi_cache.decorator import cache
 from pydantic import BaseModel
 
 
 from src.emulator import emulate, init_emulator
-from ..config import LOGGING
+from ..config import LOGGING, EMULATION_CACHE_SEC
 
 router = APIRouter()
 
@@ -27,6 +28,7 @@ async def test():
 
 
 @router.post("/emulate", response_model=EmulatorResult)
+@cache(expire=EMULATION_CACHE_SEC)
 async def emulate_endp(
         request_body: EmulateBody,
 ):

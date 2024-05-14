@@ -20,6 +20,7 @@ CONFIG_PATH='config.json'  # path to config with liteservers
 MAX_REQ_PER_PEER=30  # maximum amount of requests per liteserver
 LOGGING='INFO'  # logging level
 WORKERS=10  # amount of workers for uvicorn. can be equal or less than number of cores
+EMULATION_CACHE_SEC=5  # seconds to cache emulation result
 ```
 
 
