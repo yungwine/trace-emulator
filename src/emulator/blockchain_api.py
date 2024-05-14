@@ -39,7 +39,7 @@ class CachedLiteBalancer(LiteBalancer, BlockchainApi):
             if data[0] == block:
                 return data[1]
         s = time.time()
-        result = await super().raw_get_account_state(address, block, **kwargs)
+        result = await super().raw_get_account_state(address, block, choose_random=True, **kwargs)
         self._logger.debug(f'get_account_state time: {time.time() - s}, address: {address}')
         if time.time() - s > 0.25:
             self._logger.info(f'get_account_state time: {time.time() - s}, address: {address}')
