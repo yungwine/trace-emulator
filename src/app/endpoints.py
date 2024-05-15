@@ -7,7 +7,7 @@ from pydantic import BaseModel
 
 
 from src.emulator import emulate, init_emulator
-from ..config import LOGGING, EMULATION_CACHE_SEC
+from ..config import LOGGING, EMULATION_CACHE_SEC, MEMCACHED_HOST, MEMCACHED_PORT
 
 router = APIRouter()
 
@@ -45,3 +45,11 @@ async def emulate_endp(
 async def startup():
     logging.basicConfig(level=LOGGING)
     await init_emulator()
+
+    from fastapi_cache import FastAPICache
+    from fastapi_cache.backends.memcached import MemcachedBackend
+
+    from aiomcache import Client
+
+    client = Client(MEMCACHED_HOST, MEMCACHED_PORT)
+    FastAPICache.init(MemcachedBackend(client))

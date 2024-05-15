@@ -15,3 +15,5 @@ MAX_REQ_PER_PEER = int(os.getenv('MAX_REQ_PER_PEER', 30))
 
 LOGGING = os.getenv('LOGGING', 'INFO')
 EMULATION_CACHE_SEC = os.getenv('EMULATION_CACHE_SEC', 3)
+MEMCACHED_HOST = os.getenv('MEMCACHED_HOST', 'memcached')
+MEMCACHED_PORT = os.getenv('MEMCACHED_PORT', 11211)

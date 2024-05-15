@@ -12,3 +12,10 @@ services:
     ports:
       - "${PORT}:80"
     restart: always
+
+  memcached:
+    container_name: memcached
+    image: memcached:latest
+    ports:
+      - "11211:11211"
+    restart: always
