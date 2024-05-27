@@ -18,6 +18,7 @@ exceptiongroup==1.2.1
 fastapi==0.111.0
 fastapi-cli==0.0.3
 fastapi-cache2 @ git+https://github.com/yungwine/fastapi-cache.git
+prometheus-fastapi-instrumentator>=0.20.0
 fonttools==4.51.0
 frozenlist==1.4.1
 h11==0.14.0
