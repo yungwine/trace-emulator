@@ -33,7 +33,7 @@ async def emulate_endp(
         request_body: EmulateBody,
 ):
     try:
-        res = await asyncio.wait_for(emulate(request_body.message), timeout=10)
+        res = await asyncio.wait_for(emulate(request_body.message), timeout=3)
         return res
     except asyncio.TimeoutError:
         return {'ok': False, 'message': 'timeout', 'result': {}}

@@ -36,7 +36,7 @@ class CachedLiteBalancer(LiteBalancer, BlockchainApi):
             block = self.last_mc_block
         data = self.cache.get(address)
         if data is not None:
-            if data[0] == block:
+            if data[0] == block or block.seqno - data[0].seqno <= 1:
                 return data[1]
         s = time.time()
         result = await super().raw_get_account_state(address, block, choose_random=True, **kwargs)
